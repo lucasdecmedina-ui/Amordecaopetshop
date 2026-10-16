@@ -1,0 +1,190 @@
+@import "tailwindcss" source(none);
+@source "../src";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --font-display: "Fredoka", ui-rounded, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --background: #fffaf8;
+  --foreground: #231d20;
+  --primary: #db2777;
+  --primary-foreground: #ffffff;
+  --muted: #fff0f5;
+  --muted-foreground: #71656b;
+  --border: #f0dde4;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #fbcfe8;
+    color: #831843;
+  }
+}
+
+@utility eyebrow {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.hero-halo {
+  position: absolute;
+  z-index: -1;
+  border-radius: 999px;
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+.hero-halo-one {
+  top: 8rem;
+  left: -10rem;
+  width: 31rem;
+  height: 31rem;
+  background: #ffe1ed;
+}
+
+.hero-halo-two {
+  top: 4rem;
+  right: -15rem;
+  width: 38rem;
+  height: 38rem;
+  background: #fff0b6;
+  opacity: 0.62;
+}
+
+.hero-paws {
+  position: absolute;
+  top: 12rem;
+  right: max(2rem, calc((100vw - 82rem) / 2));
+  display: flex;
+  gap: 2.6rem;
+  color: #f9a8d4;
+  opacity: 0.4;
+  transform: rotate(-15deg);
+}
+
+.hero-paws svg:nth-child(1) {
+  width: 3rem;
+  height: 3rem;
+}
+
+.hero-paws svg:nth-child(2) {
+  width: 1.4rem;
+  height: 1.4rem;
+  align-self: flex-end;
+}
+
+.hero-paws svg:nth-child(3) {
+  width: 2rem;
+  height: 2rem;
+  align-self: flex-start;
+}
+
+.hero-photo-wrap::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 2.4rem;
+  content: "";
+  pointer-events: none;
+}
+
+.service-card {
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.service-card:hover {
+  transform: translateY(-0.45rem);
+  box-shadow: 0 24px 40px -30px rgba(95, 35, 56, 0.42);
+}
+
+.section-paw {
+  position: absolute;
+  color: #ffffff;
+  opacity: 0.05;
+}
+
+.section-paw svg {
+  width: 13rem;
+  height: 13rem;
+}
+
+.section-paw-left {
+  top: 8rem;
+  left: -4rem;
+  transform: rotate(-22deg);
+}
+
+.section-paw-right {
+  right: -2rem;
+  bottom: 3rem;
+  transform: rotate(15deg);
+}
+
+.map-dots {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.7) 1.4px, transparent 1.4px);
+  background-size: 19px 19px;
+  mask-image: linear-gradient(135deg, black, transparent 76%);
+}
+
+@media (max-width: 640px) {
+  .hero-paws {
+    display: none;
+  }
+
+  .hero-halo-one {
+    top: 6rem;
+    left: -14rem;
+  }
+
+  .hero-halo-two {
+    right: -26rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
